@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Clock View',
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF2D2F41),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+          scaffoldBackgroundColor: const Color(0xFF2D2F41),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+          fontFamily: 'avenir'),
       debugShowCheckedModeBanner: false,
       home: const ScreenHome(),
     );
