@@ -1,11 +1,50 @@
+import 'dart:developer';
+
+import 'package:call_log/call_log.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'widgets/clock_view.dart';
 import 'widgets/navigation_buttons.dart';
 
-class ScreenHome extends StatelessWidget {
+class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
+
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  Future<void> getCallHistory() async {
+    try {
+      // Iterable<CallLogEntry> entries = await CallLog.get();
+      var now = DateTime.now();
+      int from = now.subtract(const Duration(days: 2)).millisecondsSinceEpoch;
+      int to = now.millisecondsSinceEpoch;
+      Iterable<CallLogEntry> entries = await CallLog.query(
+        dateFrom: from,
+        dateTo: to,
+      );
+      for (CallLogEntry cont in entries) {
+        DateTime callDateTime =
+            DateTime.fromMillisecondsSinceEpoch(cont.timestamp ?? 0);
+
+        String formattedDateTime =
+            DateFormat('yyyy-MM-dd hh:mm:ss a').format(callDateTime);
+        int durationInMinutes = (cont.duration ?? 0) ~/ 60;
+
+        log("Name: ${cont.name}\nNumber: ${cont.number}\nTime: $formattedDateTime\nDuration :$durationInMinutes mints");
+      }
+    } catch (e, stackTrace) {
+      log("catch $e", error: e, stackTrace: stackTrace);
+    }
+  }
+
+  @override
+  void initState() {
+    getCallHistory();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

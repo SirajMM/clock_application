@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "98341934711",
+    "project_id": "clock-app-fe31a",
+    "storage_bucket": "clock-app-fe31a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98341934711:android:a3fd0c8d7e51c40dfb9872",
+        "android_client_info": {
+          "package_name": "com.example.clock_applicton"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVByMowyLkGI6lYLjCNCSvRrpZY6XwlBE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
